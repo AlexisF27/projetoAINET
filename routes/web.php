@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class ,'index']);
 Route::get('admin/clientes', [ClienteController::class, 'admin_index'])->name('admin.clientes');
+Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
 

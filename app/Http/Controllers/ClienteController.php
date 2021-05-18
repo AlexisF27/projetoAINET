@@ -11,5 +11,5 @@ class ClienteController extends Controller
     public function admin_index(){
         $todosClientes = Cliente::all();
         return view('clientes.admin', compact('todosClientes'));
-        }
+    }
 }

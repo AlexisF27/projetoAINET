@@ -16,13 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($todosClientes as $clientes)
+        @foreach ($todosClientes as $cliente)
             <tr>
-                <td>{{$clientes->user->id}}</td>
-                <td>{{$clientes->nif}}</td>
-                <td>{{$clientes->endereco}}</td>
-                <td>{{$clientes->tipo_pagamento}}</td>
-                <td>{{$clientes->ref_pagamento}}</td>
+                <td>{{$cliente->user->id}}</td>
+                <td>{{$cliente->nif}}</td>
+                <td>{{$cliente->endereco}}</td>
+                <td>{{$cliente->tipo_pagamento}}</td>
+                <td>{{$cliente->ref_pagamento}}</td>
                 <td>
                     <a href=""
                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
