@@ -9,7 +9,6 @@
             <th>Email</th>
             <th>Tipo</th>
             <th>Bloquedo</th>
-            <th>URL Foto</th>
             <th></th>
             <th></th>
 
@@ -24,7 +23,6 @@
                 <td>{{$user->email}}</td>
                 <td>{{$user->tipo}}</td>
                 <td>{{$user->bloqueado}}</td>
-                <td>{{$user->foto_url}}</td>
                 <td>
                     <a href=""
                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
@@ -40,5 +38,6 @@
         @endforeach
     </tbody>
 </table>
+    {{ $todosUsers->links() }}
 
 @endsection

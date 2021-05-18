@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     //
     public function admin_index(){
-        $todosUsers = User::all();
+        $todosUsers = User::paginate(10);
         return view('users.admin', compact('todosUsers'));
     }
 }
