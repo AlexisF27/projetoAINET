@@ -12,6 +12,16 @@ class Cliente extends Model
     public function user(){
         return $this->belongsTo(User::class,'id','id');
     }
+
+    public function encomendas(){
+        return $this->hasMany(Encomenda::class,'cliente_id','id');
+    }
+    public function estampas(){
+        return $this->hasMany(Estampa::class,'cliente_id','id');
+    }
+
+
+
 }
 
 
