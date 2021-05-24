@@ -243,81 +243,7 @@ aside {
 }
 
 /*Formatação das áreas dos semestres, docentes e cursos*/
-.cursos-area,
-.docentes-area {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
 
-.docente,
-.curso {
-    margin: 5px;
-    line-height: 1.5;
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.curso {
-    width: calc((100%/3) - 10px);
-}
-
-.docente {
-    width: calc((100%/4) - 10px);
-}
-
-.curso-imagem,
-.docente-imagem {
-    text-align: center;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.curso-info-area,
-.docente-info-area {
-    padding: 5px;
-}
-
-.curso-label {
-    font-weight: bold;
-}
-
-.curso-label:after {
-    content: ":";
-}
-
-.curso img {
-    width: 90%;
-    height: 200px;
-    object-fit: scale-down;
-}
-
-.docente img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 50%;
-    border-radius: 50%;
-}
-
-.docente-name {
-    font-weight: bold;
-}
-
-.docente a {
-    color: gray;
-}
-
-.semestres-area {
-    display: flex;
-    flex-direction: row;
-}
-
-.semestre {
-    flex-grow: 1;
-    background-color: rgba(0, 0, 0, 0.05);
-    margin: 5px;
-    padding: 10px;
-}
 
 td,
 th {
@@ -329,11 +255,7 @@ table {
     width: 100%;
 }
 
-.add-disc {
-    cursor: pointer;
-    padding: 2px;
-    text-align: center;
-}
+
 
 .search-item {
     display: flex;
@@ -345,6 +267,18 @@ table {
     display: inline-block;
     width: 50px;
 }
+
+/*--------------------------------------------*/
+/*projeto*/
+.estampa-imagem img {
+    width: 1px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border-radius: 50%;
+}
+/*--------------------------------------------*/
+
 
 /*cursos formatação do formulário*/
 .area-form {
@@ -553,6 +487,7 @@ table {
         margin-left: 75px;
     }
 }
+
 
 @media (max-width:700px) {
 

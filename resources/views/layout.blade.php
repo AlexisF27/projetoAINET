@@ -27,11 +27,8 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon">
-            <img src="/img/logo.png" alt="Logo" class="logo-img">
-        </div>
-        <div class="sidebar-brand-text mx-3">DEI(PorDefinir)</div>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('estampas.index')}}">
+        <div class="sidebar-brand-text mx-3">MAGIC SHIRT</div>
       </a>
 
       <!-- Divider -->
@@ -50,31 +47,19 @@
 
 
 
-      <!-- Nav Item -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Cursos(PorDefinir)</span></a>
-      </li>
-        <!-- Nav Item -->
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Disciplinas(PorDefinir)</span></a>
-          </li>
-            <!-- Nav Item -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Docentes(PorDefinir)</span></a>
-      </li>
-        <!-- Nav Item -->
-        <li class="nav-item">
+    <!-- Nav Item -->
+
+    <!-- Nav Item -->
+
+    <!-- Nav Item -->
+
+    <!-- Nav Item -->
+    <!--    <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="fas fa-fw fa-table"></i>
               <span>Alunos(PorDefinir)</span></a>
           </li>
-
+        -->
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

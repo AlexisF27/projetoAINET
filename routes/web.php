@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\EstampaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,6 @@ Route::get('admin/clientes', [ClienteController::class, 'admin_index'])->name('a
 Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
 
+//Catalogo
+
+Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');

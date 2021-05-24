@@ -14,10 +14,10 @@ class Cliente extends Model
     }
 
     public function encomendas(){
-        return $this->hasMany(Encomenda::class,'cliente_id','id');
+        return $this->hasMany(Encomenda::class);
     }
     public function estampas(){
-        return $this->hasMany(Estampa::class,'cliente_id','id');
+        return $this->hasMany(Estampa::class);
     }
 
 
