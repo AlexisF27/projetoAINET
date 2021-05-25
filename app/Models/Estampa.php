@@ -11,7 +11,7 @@ class Estampa extends Model
     use HasFactory;
 
     public function categoriaRef(){
-        return $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class, 'categoria_id', 'id');
     }
 
     public function tshirts(){
