@@ -15,6 +15,7 @@
         </tr>
     </thead>
     <tbody>
+    <div class="docentes-area">
         @foreach ($todasEstampas as $estampa)
             <tr>
                 <td>
@@ -26,7 +27,6 @@
                 </td>
                 <td>{{$estampa->nome}}</td>
                 <td>{{$estampa->descricao}}</td>
-                <td>{{$estampa->categoriaRef->nome}}</td>
                 <td>
                     <a href=""
                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
@@ -40,7 +40,8 @@
                 </td>
             </tr>
         @endforeach
+        </div>
     </tbody>
 </table>
-{{$todasEstampas->links()}}
+
 @endsection
