@@ -1,6 +1,35 @@
 @extends('layout')
 @section('content')
 
+
+<div class="row">
+
+    <div class="col-3">
+        <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Disciplina</a>
+    </div>
+
+    <form method="GET" action="{{route('estampas.index')}}" class="form-group">
+        <div class="input-group">
+            <select class="custom-select" name="categoria" id="inputCategoria" aria-label="Categoria">
+                <option value="" {{ '' == old('categoria_id', $selectedCategoria) ? 'selected' : ''}}>Todas as Categorias</option>
+
+                @foreach ($lista_Categorias as $id => $nome)
+                    <option value={{$id}} {{$id == old('categoria_id', $selectedCategoria) ? 'selected' : '' }} > {{$nome}} </option>
+                @endforeach
+            </select>
+            <div class="input-group">
+                <input type="text" name="nome" class="form-control" id="inputNomeEstampa" aria-label="Estampa" placeholder="Nome Estampa">
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
+            </div>
+        </div>
+  </form>
+</div>
+
+
+
+<div class="row">
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
@@ -28,8 +57,8 @@
                 <td>{{$estampa->descricao}}</td>
                 <td>{{$estampa->categoriaRef->nome}}</td>
                 <td>
-                    <a href=""
-                       class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
+                    <a href="{{route('estampas.edit', ['estampa' => $estampa])}}"
+                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
                 <td>
                     <form action="#" method="POST">
@@ -42,5 +71,12 @@
         @endforeach
     </tbody>
 </table>
-{{$todasEstampas->links()}}
+</div>
+
+<div class="row">
+    <div class="col">
+        {{$todasEstampas->links()}}
+    </div>
+</div>
+
 @endsection

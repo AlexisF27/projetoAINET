@@ -22,11 +22,16 @@ Route::get('admin/clientes', [ClienteController::class, 'admin_index'])->name('a
 Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
 //Login
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 //Catalogo
 
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
+Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store');
+Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update');
+Route::get('catalogo/estampa/{estampa}/edit',[EstampaController::class, 'edit'])->name('estampas.edit');
+Route::get('catalogo/create',[EstampaController::class, 'create'])->name('estampas.create');
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
