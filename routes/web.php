@@ -21,7 +21,12 @@ Route::get('/', [PageController::class ,'index']);
 Route::get('admin/clientes', [ClienteController::class, 'admin_index'])->name('admin.clientes');
 Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
+//Login
 
 //Catalogo
 
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
