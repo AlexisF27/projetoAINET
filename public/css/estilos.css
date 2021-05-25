@@ -121,7 +121,7 @@ div .card{
     display: flex;
     flex-direction: row;
 }
-/*Formatação da área de navegação*/
+
 .navbar{
     width: 100% !important;
 }
