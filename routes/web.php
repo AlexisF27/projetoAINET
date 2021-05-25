@@ -4,6 +4,8 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EstampaController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TshirtController;
+use App\Http\Controllers\EncomendaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +27,5 @@ Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.u
 //Catalogo
 
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
+Route::get('tshirt/',[TshirtController::class, 'index'])->name('tshirt.index');
+Route::get('encomendas/',[EncomendaController::class, 'index'])->name('encomendas.index');
