@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EstampaPost;
 use App\Models\Estampa;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
@@ -31,22 +32,14 @@ class EstampaController extends Controller
 
     }
 
-    public function store(Request $request){
-        $validatedData = $request->validate([
-            'nome' => 'required|max:255',
-            'descricao' => 'required|max:255',
-            'imagem_url' => 'required'
-        ],[
-            'nome.required' => 'É obrigatorio colocar nome',
-            'imagem_url.required' => 'É obrigatorio colocar uma imagem'
-        ]);
-        $newEstampa = Estampa::create($validatedData);
+    public function store(EstampaPost $request){
+        $newEstampa = Estampa::create($request->validated());
         return redirect()->route('estampas.index')
             ->with('alert-msg', 'Estampa "' . $newEstampa->nome . '" foi criada com sucesso!')
             ->with('alert-type', 'success');
     }
 
-    public function update(Request $request, Estampa $estampa)
+    public function update(EstampaPost $request, Estampa $estampa)
     {
         $estampa->fill($request->validated());
         $estampa->save();
