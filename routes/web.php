@@ -33,5 +33,6 @@ Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.st
 Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update');
 Route::get('catalogo/estampa/{estampa}/edit',[EstampaController::class, 'edit'])->name('estampas.edit');
 Route::get('catalogo/create',[EstampaController::class, 'create'])->name('estampas.create');
+Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy');
 
 
