@@ -1,4 +1,5 @@
 /*Formatação do icone do menu hamburger e das barras*/
+
 #menuIcon div {
     width: 35px;
     height: 5px;
@@ -22,23 +23,35 @@
     transition: 0.4s;
 }
 
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
 /* Rotate first bar */
+
 .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px);
     transform: rotate(-45deg) translate(-9px, 6px);
 }
 
+
 /* Fade out the second bar */
+
 .change .bar2 {
     opacity: 0;
 }
 
+
 /* Rotate last bar */
+
 .change .bar3 {
     -webkit-transform: rotate(45deg) translate(-8px, -8px);
     transform: rotate(45deg) translate(-8px, -8px);
 }
-
 
 html {
     height: 100%;
@@ -53,7 +66,9 @@ body {
     font-size: 10pt;
 }
 
+
 /*Formatação do cabeçalho e dos seus elementos*/
+
 header {
     display: flex;
     flex-direction: row;
@@ -92,14 +107,18 @@ h1 {
     flex-grow: 1;
 }
 
+
 /*Área que contém o menu, a secção principal, a barra lateral e o footer*/
+
 .container {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
 }
 
+
 /*Formatação da secção principal*/
+
 section {
     background-color: rgba(0, 0, 0, 0.1);
     flex-grow: 1;
@@ -118,7 +137,9 @@ section {
     padding: 15px;
 }
 
+
 /*Formatação da área de navegação*/
+
 nav {
     background-color: black;
     min-width: 150px;
@@ -162,13 +183,17 @@ nav i {
     background-color: silver;
 }
 
+
 /*Formatação do conteúdo da página da apresentação*/
+
 #main p,
 #main li {
     line-height: 1.5;
 }
 
+
 /*Formatação do rodapé*/
+
 footer p {
     margin: 0;
 }
@@ -186,14 +211,15 @@ footer a:hover {
 footer {
     height: 25px;
     line-height: 25px;
-
     width: calc(100% - 30px);
     padding: 15px;
     background-color: rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+
 /*Formatação da área aside e dos seus items*/
+
 aside {
     min-width: 150px;
     background-color: rgba(0, 0, 0, 0.05);
@@ -209,7 +235,6 @@ aside {
 
 .disc:nth-child(odd) {
     background-color: rgba(0, 0, 0, 0.15);
-
 }
 
 .disc:nth-child(even) {
@@ -242,8 +267,8 @@ aside {
     cursor: pointer;
 }
 
-/*Formatação das áreas dos semestres, docentes e cursos*/
 
+/*Formatação das áreas dos semestres, docentes e cursos*/
 
 td,
 th {
@@ -254,8 +279,6 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-
-
 
 .search-item {
     display: flex;
@@ -268,25 +291,26 @@ table {
     width: 50px;
 }
 
+
 /*--------------------------------------------*/
+
+
 /*projeto*/
+
 .estampa-imagem img {
-    display: flex;
-    width: 50px;
-    height: 50px;
+    width: 1px;
+    height: 100px;
     object-fit: cover;
     border-radius: 50%;
     border-radius: 50%;
 }
 
-.magic_shirt_space{
-    background-color: rgba(0, 0, 0, 0.05);
 
-}
 /*--------------------------------------------*/
 
 
 /*cursos formatação do formulário*/
+
 .area-form {
     display: flex;
     flex-direction: row;
@@ -433,17 +457,14 @@ table {
 }
 
 @media(max-width:1200px) {
-
     .curso,
     .docente {
         width: calc((100%/2) - 10px);
     }
-
     /*As áreas passam a ser mostradas en coluna*/
     #telefones-area {
         flex-direction: column;
     }
-
     /*O segundo telefone aparece à esquerda*/
     #telefones-area .item-form:nth-child(2) {
         justify-content: initial;
@@ -451,42 +472,35 @@ table {
 }
 
 @media(max-width:1000px) {
-
     /*Na área dos cursos e dos docentes e dos semestre a informação passa a ser vista em coluna*/
     .cursos-area,
     .docentes-area,
     .semestres-area {
         flex-direction: column;
     }
-
     /*A informação é apresentada ocupando toda a largura disponível*/
     .curso,
     .docente {
         width: auto;
     }
-
     /*A imagem passa a ser apresentada do lado esquerdo e a informação do lado direito*/
     .docente {
         display: flex;
         flex-direction: row;
     }
-
     /*As áreas passam a ser mostradas en coluna*/
     .area-form {
         flex-direction: column;
     }
-
     /*As áreas à direita passam a ter largura automática e a margem à esquerda passa a ser 0*/
     .form-right-area {
         width: auto;
         margin-left: 0;
     }
-
     /*Os títulos das origens e estatutos aparecem mais à esquerda*/
     .title-items {
         margin-left: 50px;
     }
-
     /*Os radios e checkboxes aparecem mais à esquerda*/
     #origem-area .item-form,
     #estatutos-area .item-form {
@@ -494,9 +508,7 @@ table {
     }
 }
 
-
 @media (max-width:700px) {
-
     /*Para que os géneros apareçam em coluna*/
     #generos-area {
         flex-direction: column;
@@ -504,91 +516,75 @@ table {
 }
 
 @media(max-width:600px) {
-
     /*O título principal não é mostrado*/
     header h1 {
         display: none;
     }
-
     /*Todo o conteúdo da página passa a ser mostrado em coluna*/
     .container {
         flex-direction: column;
     }
-
     /*A área à esquerda da secção principal passa a não ocupar toda a altura disponível*/
     .left-content {
         flex-grow: 0;
     }
-
     /*A área de navegação passa a não estar visível
     Com javacript, ao clicar-se no icone do menu a nav vai aumentar de largura*/
     nav {
         max-height: 0px;
     }
-
     /*Os elementos da lista passam a ocupar todo o espaço disponível, sem margem e com border superior*/
     nav li {
         margin: 0;
         border-top: 1px solid gray;
         width: auto;
     }
-
     /*A margem da lista passa a ser 0*/
     nav ul {
         margin: 0;
     }
-
     /*O logo passa a não ter uma largura definida*/
     #logo {
         width: auto;
         margin-left: 10px;
     }
-
     /*O conteúdo da secção principal passa a ser visto em coluna*/
     .content {
         flex-direction: column;
     }
-
     /*A área lateral passa a ocupar toda a área disponível*/
     aside {
         width: auto;
     }
-
     /*Passa a ser visível o icone do menu hamburger*/
     #menuIcon {
         display: block;
     }
-
     /*as legendas dos campos passam a não ter largura definida*/
     .area-form label {
         width: auto;
         text-align: left;
         margin-bottom: 5px;
     }
-
     /*a maior parte dos elementos passa a estar na forma de coluna*/
     .item-form {
         flex-direction: column;
     }
-
     /*ambos os géneros mantém-se na mesma linha e o controlo do m23*/
     #generos-area .item-form,
     .item-form.m23-item {
         flex-direction: row;
     }
-
     /*As áreas que têm as origens e estatutos mantém-se em linha*/
     #origem-area .item-form,
     #estatutos-area .item-form {
         flex-direction: row;
         margin-left: 10px;
     }
-
     /*Os títulos das origens e estatutos aparecem a 0px da margem esquerda*/
     .title-items {
         margin-left: 0px;
     }
-
     /*Os campos passam a ter largura automática*/
     .item-form input[type="text"],
     .item-form input[type="email"],
@@ -599,7 +595,6 @@ table {
 }
 
 @media (min-width:601px) {
-
     /*
     Em dispositivos com largura de viewport superior a 601px o menu é sempre visível.
     Os estilos atribuidos com javascript têm prioridade em relação ao CSS do ficheiro.

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Registar') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group row">
@@ -61,12 +61,23 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('profile_picture') ? ' has-error' : '' }} row">
+                            <label for="photo" class="col-md-4 col-form-label text-md-right">Profile Picture</label>
+                            <div class="col-md-6">
+                            @if ($errors->has('profile_picture'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('profile_picture') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>

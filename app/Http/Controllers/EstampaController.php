@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EstampaPost;
 use App\Models\Estampa;
-use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class EstampaController extends Controller

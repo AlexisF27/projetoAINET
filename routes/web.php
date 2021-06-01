@@ -23,10 +23,21 @@ Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.u
 
 //Login
 Auth::routes();
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+
 //Catalogo
+
 
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
 Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store');
@@ -34,5 +45,6 @@ Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->
 Route::get('catalogo/estampa/{estampa}/edit',[EstampaController::class, 'edit'])->name('estampas.edit');
 Route::get('catalogo/create',[EstampaController::class, 'create'])->name('estampas.create');
 Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy');
+
 
 
