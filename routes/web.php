@@ -25,8 +25,17 @@ Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.u
 
 //Catalogo
 
+
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
 
 Auth::routes();
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

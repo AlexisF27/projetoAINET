@@ -50,6 +50,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            </li>
                         @else
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
@@ -85,9 +88,6 @@
 
                     @if (session('alert-msg'))
                         @include('partials.message')
-                    @endif
-                    @if ($errors->any())
-                        @include('partials.errors-message')
                     @endif
 
                     <!-- Page Heading -->
