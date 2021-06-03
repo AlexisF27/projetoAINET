@@ -10,6 +10,10 @@ class Estampa extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    protected $fillable = ['categoria_id','nome','descricao','imagem_url','informacao_extra'];
+
+
     public function categoriaRef(){
         return $this->belongsTo(Categoria::class);
     }
