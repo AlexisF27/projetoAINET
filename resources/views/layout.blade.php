@@ -26,54 +26,6 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center"
-                href="{{ route('estampas.index') }}">
-                <div class="sidebar-brand-text mx-3">MAGIC SHIRT</div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-
-
-
-            <!-- Nav Item -->
-
-            <!-- Nav Item -->
-
-            <!-- Nav Item -->
-
-            <!-- Nav Item -->
-            <!--    <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Alunos(PorDefinir)</span></a>
-          </li>
-        -->
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-        </ul>
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -85,14 +37,21 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+
+
+                    <div class="p-3 mb-2 bg-info text-white">
+                        <a class="text-dark " href="{{ route('estampas.index') }}">
+                            <div class="sidebar-brand-text mx-3">MAGIC SHIRT</div>
+                        </a>
+                    </div>
 
                     <ul class="navbar-nav ml-auto">
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
                             <!-- Nav Item - User Information -->
@@ -102,23 +61,25 @@
                                     <span
                                         class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
                                     <img class="img-profile rounded-circle"
-                                        src="{{ Auth::user()->url_foto ? asset('storage/fotos/' . Auth::user()->url_foto) : asset('storage/fotos//default_img.png') }}">
+                                        src="{{ Auth::user()->foto_url ? asset('storage/fotos/' . Auth::user()->foto_url) : asset('fotos/default_img.png') }}">
                                 </a>
                                 <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    arialabelledby="userDropdown">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                     {{ __('Logout') }}
+                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         {{ csrf_field() }}
                                     </form>
+                                 </a>
                                 </div>
                             </li>
                         @endguest
                     </ul>
+
                 </nav>
                 <!-- End of Topbar -->
 
@@ -128,7 +89,6 @@
                     @if (session('alert-msg'))
                         @include('partials.message')
                     @endif
-
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">

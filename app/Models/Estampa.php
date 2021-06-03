@@ -15,7 +15,7 @@ class Estampa extends Model
 
 
     public function categoriaRef(){
-        return $this->belongsTo(Categoria::class, 'categoria_id', 'id');
+        return $this->belongsTo(Categoria::class);
     }
 
     public function tshirts(){

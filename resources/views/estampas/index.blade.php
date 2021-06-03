@@ -44,6 +44,7 @@
         </tr>
     </thead>
     <tbody>
+    <div class="docentes-area">
         @foreach ($todasEstampas as $estampa)
             <tr>
                 <td>
@@ -69,6 +70,7 @@
                 </td>
             </tr>
         @endforeach
+        </div>
     </tbody>
 </table>
 </div>
