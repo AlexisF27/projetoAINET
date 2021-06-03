@@ -26,10 +26,10 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//Catalogo
 
 
-Route::get('catalogo/', [EstampaController::class, 'index'])->name('estampas.index');
+
+
 
 Auth::routes();
 /*
@@ -43,8 +43,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 */
-Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store');
-Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update');
-Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])->name('estampas.edit');
-Route::get('catalogo/create', [EstampaController::class, 'create'])->name('estampas.create');
-Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy');
+
+//Catalogo
+Route::middleware(['auth'])->group(function () {
+    Route::get('catalogo/', [EstampaController::class, 'index'])->name('estampas.index')->middleware('can:viewAny,App\Models\Estampa');;
+    Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store')->middleware('can:create,App\Models\Estampa');;
+    Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update')->middleware('can:update,cliente');;
+    Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])->name('estampas.edit')->middleware('can:view,cliente');;
+    Route::get('catalogo/create', [EstampaController::class, 'create'])->name('estampas.create')->middleware('can:create,App\Models\Estampa');;
+    Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy')->middleware('can:delete,cliente');;
+});

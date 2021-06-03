@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EstampaPost;
 use App\Models\Estampa;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class EstampaController extends Controller
@@ -13,6 +15,7 @@ class EstampaController extends Controller
     public function index(Request $request){
         $selectedCategoria = $request->categoria ?? '';
         $selectedNomeEstampa = $request->nome ?? '';
+        $user = Auth::user();
         $qry = Estampa::query();
         if ($selectedCategoria) {
             $qry->where('categoria_id', $selectedCategoria);
@@ -22,7 +25,7 @@ class EstampaController extends Controller
         }
         $todasEstampas = $qry->paginate(10);
         $lista_Categorias = Categoria::pluck('nome','id');
-        return view('estampas.index', compact('todasEstampas','selectedCategoria','lista_Categorias','selectedNomeEstampa'));
+        return view('estampas.index', compact('todasEstampas','selectedCategoria','lista_Categorias','selectedNomeEstampa','user'));
     }
 
     public function create(){
