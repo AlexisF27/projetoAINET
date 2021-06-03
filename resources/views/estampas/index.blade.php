@@ -18,7 +18,7 @@
                 @endforeach
             </select>
             <div class="input-group">
-                <input type="text" name="nome" class="form-control" id="inputNomeEstampa" aria-label="Estampa" placeholder="Nome Estampa">
+                <input type="text" name="nome" class="form-control" value="{{old('nome', $selectedNomeEstampa)}}" id="inputNomeEstampa" aria-label="Estampa" placeholder="Nome Estampa">
             </div>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
@@ -55,13 +55,13 @@
                 </td>
                 <td>{{$estampa->nome}}</td>
                 <td>{{$estampa->descricao}}</td>
-                <td>{{$estampa->categoriaRef->nome}}</td>
+                <td>{{$estampa->categoriaRef->nome ?? ''}}</td>
                 <td>
                     <a href="{{route('estampas.edit', ['estampa' => $estampa])}}"
                         class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST">
+                    <form action="{{route('estampas.destroy', ['estampa' => $estampa])}}" method="POST">
                         @csrf
                         @method("DELETE")
                         <input type="submit" class="btn btn-danger btn-sm" value="Apagar">
@@ -75,7 +75,7 @@
 
 <div class="row">
     <div class="col">
-        {{$todasEstampas->links()}}
+        {{$todasEstampas->withQueryString()->links()}}
     </div>
 </div>
 

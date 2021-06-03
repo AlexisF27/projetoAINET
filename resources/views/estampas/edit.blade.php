@@ -2,7 +2,7 @@
 @section('title','Alterar Estampa' )
 @section('content')
 
-    <form method="POST" action="{{route('estampas.update', ['estampa' => $estampa]) }}" class="form-group">
+    <form method="POST" action="{{route('estampas.update', ['estampa' => $newEstampa]) }}" class="form-group" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('estampas.partials.create-edit')

@@ -13,7 +13,7 @@ class EstampaPost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,8 +26,8 @@ class EstampaPost extends FormRequest
         return [
             'nome' => 'required|max:255',
             'descricao' => 'required|max:255',
-            'imagem_url' => 'required'
-            //
+            'imagem_url' => 'required|file',
+            'categoria_id' => 'required|exists:categorias,id'
         ];
     }
 
