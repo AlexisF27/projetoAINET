@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EstampaPost;
 use App\Models\Estampa;
 use App\Models\Categoria;
+use App\Models\Tshirt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,14 @@ class EstampaController extends Controller
         }
         $todasEstampas = $qry->paginate(10);
         $lista_Categorias = Categoria::pluck('nome','id');
-        return view('estampas.index', compact('todasEstampas','selectedCategoria','lista_Categorias','selectedNomeEstampa','user'));
+        $newTshirt = new Tshirt();
+        return view('estampas.index',
+        compact('todasEstampas',
+                'selectedCategoria',
+                'lista_Categorias',
+                'selectedNomeEstampa',
+                'user',
+                'newTshirt'));
     }
 
     public function create(){
