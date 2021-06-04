@@ -19,7 +19,7 @@ class Tshirt extends Model
     }
 
     public function coresRef(){
-        return $this->belongsTo(Cor::class,'cor_codigo','codigo');
+        return $this->belongsTo(Cores::class,'cor_codigo','codigo');
     }
 
 }
