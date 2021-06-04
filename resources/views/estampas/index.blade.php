@@ -5,7 +5,9 @@
 <div class="row">
 
     <div class="col-3">
+        @can('create', App\Models\Cliente::class)
         <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Disciplina</a>
+        @endcan
     </div>
 
     <form method="GET" action="{{route('estampas.index')}}" class="form-group">
@@ -18,7 +20,7 @@
                 @endforeach
             </select>
             <div class="input-group">
-                <input type="text" name="nome" class="form-control" id="inputNomeEstampa" aria-label="Estampa" placeholder="Nome Estampa">
+                <input type="text" name="nome" class="form-control" value="{{old('nome', $selectedNomeEstampa)}}" id="inputNomeEstampa" aria-label="Estampa" placeholder="Nome Estampa">
             </div>
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit">Filtrar</button>
@@ -37,8 +39,10 @@
             <th>Nome</th>
             <th>Descricao</th>
             <th>Categoria</th>
+            @can('view', $user)
             <th></th>
             <th></th>
+            @endcan
 
 
         </tr>
@@ -56,17 +60,22 @@
                 </td>
                 <td>{{$estampa->nome}}</td>
                 <td>{{$estampa->descricao}}</td>
+                <td>{{$estampa->categoriaRef->nome ?? ''}}</td>
+                @can('view', $user)
                 <td>
                     <a href="{{route('estampas.edit', ['estampa' => $estampa])}}"
                         class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
+                @endcan
+                @can('delete', $user)
                 <td>
-                    <form action="#" method="POST">
+                    <form action="{{route('estampas.destroy', ['estampa' => $estampa])}}" method="POST">
                         @csrf
                         @method("DELETE")
                         <input type="submit" class="btn btn-danger btn-sm" value="Apagar">
                     </form>
                 </td>
+                @endcan
             </tr>
         @endforeach
         </div>
@@ -76,7 +85,7 @@
 
 <div class="row">
     <div class="col">
-        {{$todasEstampas->links()}}
+        {{$todasEstampas->withQueryString()->links()}}
     </div>
 </div>
 
