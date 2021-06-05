@@ -42,9 +42,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Carrinho
 Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
-Route::post('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
-Route::put('carrinho/disciplinas/{disciplina}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
-Route::delete('carrinho/disciplinas/{disciplina}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
+Route::post('carrinho/tshirt/{estampa}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
+Route::put('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
+Route::delete('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
 Route::post('carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::delete('carrinho', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
 

@@ -45,7 +45,6 @@ class EstampaController extends Controller
 
     public function store(EstampaPost $request){
         $dados = $request->validated();
-        dd($dados);
         if($request->file('imagem_url')->isValid()){
             $dados['imagem_url'] = Storage::putFile('public/estampas', $request->file('imagem_url'));
             $dados['imagem_url'] = str_replace('public/estampas/', '', $dados['imagem_url']);

@@ -39,6 +39,7 @@
             <th>Nome</th>
             <th>Descricao</th>
             <th>Categoria</th>
+            <th>Adicinoar</th>
             @can('view', $user)
             <th></th>
             <th></th>
@@ -64,7 +65,7 @@
                 <td>
                     <form action="{{route('carrinho.store_t_shirt', $estampa)}}" method="POST">
                         @csrf
-                        <input type="submit" value="Add">
+                        <input class="btn btn-primary btn-sm" role="button" type="submit" value="Adicionar">
                     </form>
                 </td>
                 @can('view', $user)

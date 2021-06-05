@@ -19,12 +19,6 @@ class EstampaPolicy
         //
     }
 
-    public function before($user, $ability){
-        if($user->bloqueado){
-            return true;
-        }
-    }
-
     public function viewAny(User $user){
         return ($user->tipo == 'C' || $user->tipo == 'F' || $user->tipo == 'A');
     }
