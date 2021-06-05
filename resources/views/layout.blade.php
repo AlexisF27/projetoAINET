@@ -69,12 +69,18 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     </a>
                                     <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('users.edit', $user) }}">
+                                        {{ __('EditarPerfil') }}
+
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                      {{ __('Logout') }}
                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         {{ csrf_field() }}
                                     </form>
                                  </a>
+
+
                                 </div>
                             </li>
                         @endguest

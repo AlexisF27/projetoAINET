@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -63,9 +64,8 @@
 
                         <div class="form-group{{ $errors->has('profile_picture') ? ' has-error' : '' }} row">
                             <label for="photo" class="col-md-4 col-form-label text-md-right">Profile Picture</label>
+                            <input id="profilePicture" type="file" class="col-md-4 col-form-control" name="profile_picture">
                             <div class="col-md-6">
-                            <input id="profilePicture" type="file" class="form-control" name="profile_picture">
-
                             @if ($errors->has('profile_picture'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('profile_picture') }}</strong>
@@ -79,7 +79,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
-                            </div>
                         </div>
                     </form>
                 </div>

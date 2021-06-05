@@ -3,3 +3,8 @@
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.edit-imagem{
+    width: 200px!important;
+    height: 200px!important;
+}
