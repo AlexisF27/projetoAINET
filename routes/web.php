@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\TshirtController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +42,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 */
 
 //Carrinho
-Route::get('/carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
-Route::post('carrinho/tshirt/{estampa}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
+Route::get('carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
+Route::post('carrinho/estampa/{estampa}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
+
 Route::put('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
 Route::delete('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
 Route::post('carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::delete('carrinho', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
+//Tshirt
+Route::get('tshirt/create', [TshirtController::class, 'create'])->name('tshirts.create');
 
 
 //Catalogo

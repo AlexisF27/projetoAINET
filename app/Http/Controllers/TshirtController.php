@@ -14,7 +14,11 @@ class TshirtController extends Controller
     public function create(Estampa $estampa){
         $newTshirt = new Tshirt();
         $lista_cores= Cores::all();
-        return view('tshirts.create',compact('newTshirt','lista_cores','estampa'));
+        $tamanhos = array( 'XS', 'S', 'M', 'L', 'XL');
+        return view('tshirts.create',compact('newTshirt','lista_cores','estampa','tamanhos'));
+    }
+    public function store(Request $request){
+
     }
 
 }

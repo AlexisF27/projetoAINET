@@ -63,10 +63,10 @@
                 <td>{{$estampa->descricao}}</td>
                 <td>{{$estampa->categoriaRef->nome ?? ''}}</td>
                 <td>
-                    <form action="{{route('carrinho.store_t_shirt', $estampa)}}" method="POST">
-                        @csrf
-                        <input class="btn btn-primary btn-sm" role="button" type="submit" value="Adicionar">
-                    </form>
+                <form action="{{route('carrinho.store_t_shirt',$estampa)}}" method="POST">
+                    @csrf
+                    <input type="submit" value="Add">
+                </form>
                 </td>
                 @can('view', $user)
                 <td>

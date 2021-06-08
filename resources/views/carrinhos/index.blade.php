@@ -50,27 +50,27 @@
         <td>{{ $row['subtotal'] }} </td>
 
         <td>
-            <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
+            {{-- <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="quantidade" value="1">
                 <input class="btn btn-primary btn-sm" role="button" type="submit" value="Incrementar">
-            </form>
+            </form> --}}
         </td>
         <td>
-            <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
+            {{-- <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="quantidade" value="-1">
                 <input class="btn btn-primary btn-sm" role="button" type="submit" value="Decrementar">
-            </form>
+            </form> --}}
         </td>
         <td>
-            <form action="{{route('carrinho.destroy_t_shirt', $row['id'])}}" method="POST">
+            {{-- <form action="{{route('carrinho.destroy_t_shirt', $row['id'])}}" method="POST">
                 @csrf
                 @method('delete')
                 <input type="submit" class="btn btn-danger btn-sm" type="submit" value="Remover">
-            </form>
+            </form> --}}
 
         </td>
     </tr>

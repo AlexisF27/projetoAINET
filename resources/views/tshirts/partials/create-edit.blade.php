@@ -1,3 +1,4 @@
+
 <div class="form-group">
     <label for="inputCor_codigo">Cor</label>
     <select class="form-control" name="cor_codigo" id="inputCor_codigo">
@@ -10,21 +11,26 @@
       @enderror
 </div>
 
+
+
 <div class="form-group">
-    <label for="inputCor_codigo">Cor</label>
-    <input type="text" class="form-control" name="cor_codigo" id="inputCor_codigo" value="{{old('cor_codigo', $newTshirt->coresRef->nome)}}" />
-      @error('nome')
+    <label for="inputCor_tamanho">Tamanho</label>
+    <select class="form-control" name="tamanho" id="inputTamanho">
+        @foreach ($tamanhos as $tamanho)
+          <option value="{{$tamanho}}" {{ old('tamanho', $newTshirt->tamanho) ? 'selected' : ''}}>{{$tamanho}}</option>
+        @endforeach
+    </select>
+      @error('cor')
           <div class="small text-danger">{{$message}}</div>
       @enderror
 </div>
 
-<div class="form-group">
-    <label for="inputNome">Descrição</label>
-    <textarea rows="5" type="text" class="form-control" name="descricao" id="textAreaDescricao" value="{{old('nome', $newEstampa->descricao)}}">
-    </textarea>
-      @error('descricao')
-          <div class="small text-danger">{{$message}}</div>
-      @enderror
+<div class="item-form">
+    <label for="quantidades">Quantidade</label>
+    <input type="text" name="quantidade" id="quantidade" class="form-control" value="{{old('quantidade')}}">
+    @error('quantidade')
+        <div class="error">{{ $message }}</div>
+    @enderror
 </div>
 
 
