@@ -23,7 +23,7 @@ class EncomendaController extends Controller
         $id= $encomenda->id;
         try {
             $encomenda->delete();
-            Storage::delete(['imagem_url']);
+            
             return redirect()->route('encomendas.index')
                 ->with('alert-msg', 'Encomenda ID  "' . $encomenda->id . '" anulada com sucesso!')
                 ->with('alert-type', 'success');
