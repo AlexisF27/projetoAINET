@@ -29,3 +29,5 @@ Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.u
 Route::get('catalogo/',[EstampaController::class, 'index'])->name('estampas.index');
 Route::get('tshirt/',[TshirtController::class, 'index'])->name('tshirt.index');
 Route::get('encomendas/',[EncomendaController::class, 'index'])->name('encomendas.index');
+
+Route::delete('encomendas', [EncomendaController::class, 'anular_encomenda'])->name('encomenda.destroy');

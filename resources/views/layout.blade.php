@@ -72,13 +72,13 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+<!-- 
             @if (session('alert-msg'))
                 @include('partials.message')
             @endif
             @if ($errors->any())
                 @include('partials.errors-message')
-            @endif
+            @endif -->
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">

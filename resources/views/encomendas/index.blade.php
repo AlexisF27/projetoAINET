@@ -28,7 +28,7 @@
                 <a href="" class="btn btn-primary btn-sm" role="button" aria-pressed="true">Paga</a>
             </td>
             <td>
-                <form action="#" method="POST">
+                <form action="{{route('encomenda.destroy',['encomenda' => $encomenda])}}" method="POST">
                     @csrf
                     @method("DELETE")
                     <input type="submit" class="btn btn-danger btn-sm" value="Anular">

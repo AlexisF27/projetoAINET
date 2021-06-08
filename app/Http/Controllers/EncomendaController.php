@@ -18,15 +18,16 @@ class EncomendaController extends Controller
 
     }
 
-    public function destroy(Encomenda $encomenda)
+    public function anular_encomenda(Encomenda $encomenda)
     {
-        $id= $encomenda->id;
+       
         try {
             $encomenda->delete();
             
             return redirect()->route('encomendas.index')
-                ->with('alert-msg', 'Encomenda ID  "' . $encomenda->id . '" anulada com sucesso!')
-                ->with('alert-type', 'success');
+                 ->with('alert-msg', 'Encomenda ID  "' . $encomenda->id . '" anulada com sucesso!')
+                ->with('alert-type', 'success'); 
+                
         } catch (\Throwable $th) {
             
         }
