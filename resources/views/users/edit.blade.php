@@ -95,7 +95,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Editar') }}
+                                        {{ __('Confirmar') }}
                                     </button>
                                 </div>
 
@@ -108,7 +108,7 @@
                             <div class="form-group row">
                                 <label for="name" class=" text-md-right">{{ __('Profile Picture') }}</label>
 
-                                <img class="img-profile edit-imagem"
+                                <img id="currentPP" class="img-profile edit-imagem"
                                         src="{{ Auth::user()->foto_url ? asset('storage/fotos/' . Auth::user()->foto_url) : asset('fotos/default_img.png') }}">
                                 </a>
                             </div>

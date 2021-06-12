@@ -26,17 +26,31 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
+    public function profile(User $user)
+    {
+        $user = Auth::user();
+        return view('users.profile', compact('user'));
+    }
+
     public function update(User $user)
     {
         $request = request();
 
 
         $profileImage = $request->file('profile_picture');
-        $profileImageSaveAsName = time() . "profileD." . $profileImage->getClientOriginalExtension();
-
-        $upload_path = 'storage/fotos/';
+        if ($profileImage!=null){
+            $profileImageSaveAsName = time() . "profileD." . $profileImage->getClientOriginalExtension();
+            $upload_path = 'storage/fotos/';
         $profile_image_url = $profileImageSaveAsName;
         $success = $profileImage->move($upload_path, $profileImageSaveAsName);
+
+        }
+        else
+        {
+            $profileImageSaveAsName= $user->foto_url;
+        }
+
+
 
         $this->validate(request(), [
             'name' => 'required',

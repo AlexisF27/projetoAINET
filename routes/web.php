@@ -39,8 +39,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 */
 
-
-Route::get('users/{user}',  [UserController::class, 'edit'])->name('users.edit');
+Route::get('users/{user}',  [UserController::class, 'profile'])->name('users.profile');
+Route::get('users/{user}/edit',  [UserController::class, 'edit'])->name('users.edit');
 Route::patch('users/{user}/update',  [UserController::class, 'update'])->name('users.update');
 //Route::patch('users/{user}/update',  ['as' => 'users.update', 'uses' => 'UserController@update']);
 
