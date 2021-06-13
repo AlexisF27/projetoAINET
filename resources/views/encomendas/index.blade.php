@@ -29,12 +29,8 @@
             <th>Estado</th>
             <th>Data</th>
             <th>Preço Total</th>
-            <th>NIF</th>
-            <th>Endereço</th>
-            <th>Tipo Pagamento</th>
-            <th>Referencia Pagamento</th>
             <th>Mudar Estado</th>
-            <th></th>
+            <th>Detalhes</th>
         </tr>
     </thead>
     <tbody>
@@ -44,23 +40,18 @@
         <td>{{ $encomenda->estado }} </td>
         <td>{{ $encomenda->data }} </td>
         <td>{{ $encomenda->preco_total }} </td>
-        <td>{{ $encomenda->nif }} </td>
-        <td>{{ $encomenda->endereco }} </td>
-        <td>{{ $encomenda->tipo_pagamento }} </td>
-        <td>{{ $encomenda->ref_pagamento }} </td>
+
         <td>
             <form action="{{route('encomendas.update', ['encomenda' => $encomenda->id])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="estado" >
-                <input type="submit">
+                <input class="btn btn-warning" type="submit" value="Mudar">
             </form>
       </td>
         <td>
-
-        </td>
-        <td>
-
+            <a href="{{route('encomendas.index_funcionario', ['encomenda' => $encomenda->id])}}"
+                class="btn btn-primary btn-sm" role="button" aria-pressed="true">Ver Detalhes</a>
         </td>
     </tr>
     @endforeach

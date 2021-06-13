@@ -21,6 +21,11 @@ class EncomendaController extends Controller
         return view('encomendas.index', compact('selectedEstado','user','todasEncomendas','lista_estados'));
     }
 
+    public function index_funcionario(Request $request, $id){
+        $encomenda = Encomenda::findOrFail($id);
+        return view('encomendas.index_funcionario',compact('encomenda'));
+    }
+
     public function updateEstado(Request $request, $id){
         $encomenda = Encomenda::findOrFail($id);
         if($encomenda->estado == 'paga'){
