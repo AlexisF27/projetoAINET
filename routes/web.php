@@ -55,7 +55,7 @@ Route::get('tshirt/{tshirt}/edit', [TshirtController::class, 'edit'])->name('tsh
 Route::put('tshirt/{tshirt}', [TshirtController::class, 'update'])->name('tshirts.update');
 //Encomendas
 Route::get('encomendas/', [EncomendaController::class, 'index'])->name('encomendas.index');
-
+Route::put('encomendas/{encomenda}',[EncomendaController::class, 'updateEstado'])->name('encomendas.update');
 
 //Catalogo
 Route::middleware(['auth'])->group(function () {

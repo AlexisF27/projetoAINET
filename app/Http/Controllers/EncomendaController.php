@@ -21,7 +21,19 @@ class EncomendaController extends Controller
         return view('encomendas.index', compact('selectedEstado','user','todasEncomendas','lista_estados'));
     }
 
-    public function updateEstado(){
-
+    public function updateEstado(Request $request, $id){
+        $encomenda = Encomenda::findOrFail($id);
+        if($encomenda->estado == 'paga'){
+            $msg = 'O estado da encomenda ' . $request->id . ' foi mudado para fechada ';
+            $encomenda->estado = 'fechada';
+        }
+        if($encomenda->estado == 'pendente'){
+            $msg = 'O estado da encomenda ' . $request->id . ' foi mudado para pagada ';
+            $encomenda->estado = 'paga';
+        }
+        $encomenda->save();
+        return back()
+        ->with('alert-msg', 'A encomenda "' . $encomenda->id . '" mudou de estado para "'. $encomenda->estado  .'"!')
+        ->with('alert-type', 'warning');
     }
 }

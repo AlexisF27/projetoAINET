@@ -33,7 +33,7 @@
             <th>Endereço</th>
             <th>Tipo Pagamento</th>
             <th>Referencia Pagamento</th>
-            <th></th>
+            <th>Mudar Estado</th>
             <th></th>
         </tr>
     </thead>
@@ -49,8 +49,13 @@
         <td>{{ $encomenda->tipo_pagamento }} </td>
         <td>{{ $encomenda->ref_pagamento }} </td>
         <td>
-
-        </td>
+            <form action="{{route('encomendas.update', ['encomenda' => $encomenda->id])}}" method="POST">
+                @csrf
+                @method('put')
+                <input type="hidden" name="estado" >
+                <input type="submit">
+            </form>
+      </td>
         <td>
 
         </td>
