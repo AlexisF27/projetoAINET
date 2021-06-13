@@ -27,10 +27,10 @@
             <th>Tamanho</th>
             <th>Preço Singular</th>
             <th>Sub Total</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>Editar Tshirt</th>
+            <th>Incrementar</th>
+            <th>Decrementar</th>
+            <th>Remover</th>
         </tr>
     </thead>
     <tbody>
@@ -48,29 +48,32 @@
         <td>{{ $row['tamanho'] }} </td>
         <td>{{ $row['preco_un'] }} </td>
         <td>{{ $row['subtotal'] }} </td>
-
         <td>
-            {{-- <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
+            {{-- <a href="{{route('tshirts.edit', ['tshirt' => $row['tshirt_all']['id']])}}"
+                class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a> --}}
+        </td>
+        <td>
+            <form action="{{route('carrinho.update_t_shirt', $row['estampa_all'], $row['tshirt_all'])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="quantidade" value="1">
                 <input class="btn btn-primary btn-sm" role="button" type="submit" value="Incrementar">
-            </form> --}}
+            </form>
         </td>
         <td>
-            {{-- <form action="{{route('carrinho.update_t_shirt', $row['id'], $row['id_tshirt'])}}" method="POST">
+            <form action="{{route('carrinho.update_t_shirt', $row['estampa_all'], $row['tshirt_all'])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="quantidade" value="-1">
                 <input class="btn btn-primary btn-sm" role="button" type="submit" value="Decrementar">
-            </form> --}}
+            </form>
         </td>
         <td>
-            {{-- <form action="{{route('carrinho.destroy_t_shirt', $row['id'])}}" method="POST">
+            <form action="{{route('carrinho.destroy_t_shirt', $row['estampa_all'])}}" method="POST">
                 @csrf
                 @method('delete')
                 <input type="submit" class="btn btn-danger btn-sm" type="submit" value="Remover">
-            </form> --}}
+            </form>
 
         </td>
     </tr>

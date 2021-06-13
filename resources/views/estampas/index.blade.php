@@ -5,7 +5,7 @@
 <div class="row">
 
     <div class="col-3">
-        @can('create', App\Models\Cliente::class)
+        @can('create', new App\Models\Estampa)
         <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Disciplina</a>
         @endcan
     </div>
@@ -40,8 +40,10 @@
             <th>Descricao</th>
             <th>Categoria</th>
             <th>Adicinoar</th>
-            @can('view', $user)
+            @can('view', new App\Models\Estampa)
             <th></th>
+            @endcan
+            @can('delete', new App\Models\Estampa)
             <th></th>
             @endcan
 
@@ -65,16 +67,16 @@
                 <td>
                 <form action="{{route('carrinho.store_t_shirt',$estampa)}}" method="POST">
                     @csrf
-                    <input type="submit" value="Add">
+                    <input class="btn btn-success" type="submit" value="Adicionar">
                 </form>
                 </td>
-                @can('view', $user)
+                @can('view', $estampa)
                 <td>
                     <a href="{{route('estampas.edit', ['estampa' => $estampa])}}"
                         class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
                 @endcan
-                @can('delete', $user)
+                @can('delete', $estampa)
                 <td>
                     <form action="{{route('estampas.destroy', ['estampa' => $estampa])}}" method="POST">
                         @csrf

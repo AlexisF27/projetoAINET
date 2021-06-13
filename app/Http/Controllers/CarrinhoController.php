@@ -8,6 +8,7 @@ use App\Models\Estampa;
 use App\Models\Tshirt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 
 class CarrinhoController extends Controller
@@ -44,11 +45,15 @@ class CarrinhoController extends Controller
          $carrinho[$estampa->id] = [
              'id' => $tshirt->id,
              'quantidade' => $quantidade,
+             'estampa_id' => $estampa->id,
              'estampa' => $estampa->imagem_url,
              'cor' => $tshirt->coresRef->nome ?? '',
              'tamanho' => $tshirt->tamanho,
+             'tshirt_all' => $tshirt,
+             'estampa_all' => $estampa,
+             'encomenda' => $encomenda,
              'preco_un' => $tshirt->preco_un,
-             'subtotal' => $tshirt->subtotal,
+             'subtotal' => $tshirt->subtotal * $quantidade,
          ];
 
          $request->session()->put('carrinho', $carrinho);
@@ -57,6 +62,9 @@ class CarrinhoController extends Controller
              ->with('alert-type', 'success');
     }
 
+    public function editar_t_shirt(Request $request,Tshirt $tshirt){
+
+    }
     public function update_t_shirt(Request $request, Estampa $estampa, Tshirt $tshirt)
     {
         $carrinho = $request->session()->get('carrinho', []);
@@ -74,11 +82,14 @@ class CarrinhoController extends Controller
             $carrinho[$estampa->id] = [
                 'id' => $tshirt->id,
                 'quantidade' => $quantidade,
-                'estampa' => $tshirt->estampaRef->imagem_url,
-                'cor' => $tshirt->coresRef->nome,
-                'tamanho' => $tshirt->tamanho,
-                'preco_un' => $tshirt->preco_un,
-                'subtotal' => $tshirt->subtotal,
+                'estampa_id' => $estampa->id,
+                'estampa' => $estampa->imagem_url,
+                'cor' => $carrinho[$estampa->id]['cor'],
+                'tshirt_all' => $carrinho[$estampa->id]['tshirt_all'],
+                'estampa_all' => $carrinho[$estampa->id]['estampa_all'],
+                'tamanho' => $carrinho[$estampa->id]['tamanho'],
+                'preco_un' => $carrinho[$estampa->id]['preco_un'],
+                'subtotal' => $carrinho[$estampa->id]['preco_un'] * $quantidade,
             ];
         }
         $request->session()->put('carrinho', $carrinho);

@@ -45,22 +45,23 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('carrinho', [CarrinhoController::class, 'index'])->name('carrinho.index');
 Route::post('carrinho/estampa/{estampa}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
 
-Route::put('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
-Route::delete('carrinho/tshirt/{tshirt}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
+Route::put('carrinho/estampas/{estampa}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
+Route::delete('carrinho/tshirt/estampa/{estampa}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
 Route::post('carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::delete('carrinho', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
 //Tshirt
 Route::get('tshirt/create', [TshirtController::class, 'create'])->name('tshirts.create');
-
+Route::get('tshirt/{tshirt}/edit', [TshirtController::class, 'edit'])->name('tshirts.edit');
+Route::put('tshirt/{tshirt}', [TshirtController::class, 'update'])->name('tshirts.update');
 
 //Catalogo
 Route::middleware(['auth'])->group(function () {
-    Route::get('catalogo/', [EstampaController::class, 'index'])->name('estampas.index')->middleware('can:viewAny,App\Models\Estampa');;
-    Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store')->middleware('can:create,App\Models\Estampa');;
-    Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update')->middleware('can:update,cliente');;
-    Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])->name('estampas.edit')->middleware('can:view,cliente');;
-    Route::get('catalogo/create', [EstampaController::class, 'create'])->name('estampas.create')->middleware('can:create,App\Models\Estampa');;
-    Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy')->middleware('can:delete,cliente');;
+    Route::get('catalogo/', [EstampaController::class, 'index'])->name('estampas.index')->middleware('can:viewAny,App\Models\Estampa');
+    Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store')->middleware('can:create,App\Models\Estampa');
+    Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update')->middleware('can:update,App\Models\Estampa');
+    Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])->name('estampas.edit')->middleware('can:view,App\Models\Estampa');
+    Route::get('catalogo/create', [EstampaController::class, 'create'])->name('estampas.create')->middleware('can:create,App\Models\Estampa');
+    Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy')->middleware('can:delete,App\Models\Estampa');
 });
 
 
