@@ -17,7 +17,11 @@ class EncomendaController extends Controller
             $qry->where('estado', $selectedEstado);
         }
         $lista_estados = array( 'pendente', 'paga', 'fechada', 'anulada');
-        $todasEncomendas = $qry->paginate(10);
+        $todasEncomendas = $qry->where('cliente_id', $user->id)->paginate(10);
         return view('encomendas.index', compact('selectedEstado','user','todasEncomendas','lista_estados'));
+    }
+
+    public function updateEstado(){
+
     }
 }

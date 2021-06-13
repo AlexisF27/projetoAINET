@@ -30,6 +30,7 @@
             <th>Data</th>
             <th>Preço Total</th>
             <th>NIF</th>
+            <th>Endereço</th>
             <th>Tipo Pagamento</th>
             <th>Referencia Pagamento</th>
             <th></th>
