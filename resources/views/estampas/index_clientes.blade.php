@@ -5,12 +5,11 @@
 <div class="row">
 
     <div class="col-3">
-
         <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Estampa</a>
 
     </div>
 
-    <form method="GET" action="{{route('estampas.index')}}" class="form-group">
+    <form method="GET" action="{{route('estampas.index_clientes',['id' => $user->id])}}" class="form-group">
         <div class="input-group">
             <select class="custom-select" name="categoria" id="inputCategoria" aria-label="Categoria">
                 <option value="" {{ '' == old('categoria_id', $selectedCategoria) ? 'selected' : ''}}>Todas as Categorias</option>
@@ -27,9 +26,6 @@
             </div>
         </div>
   </form>
-    <div class="col-3">
-        <a href="{{route('estampas.index_clientes',['id' => $user->id])}}" class="btn btn-success" role="button" aria-pressed="true">Mis Estampas</a>
-    </div>
 </div>
 
 
@@ -38,6 +34,7 @@
 <table class="table table-striped table-bordered">
     <thead class="thead-dark">
         <tr>
+
             <th>Imagem</th>
             <th>Nome</th>
             <th>Descricao</th>

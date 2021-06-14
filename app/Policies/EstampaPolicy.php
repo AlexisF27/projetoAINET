@@ -36,7 +36,7 @@ class EstampaPolicy
     }
 
     public function create(User $user){
-        return false;
+        return true;
     }
     public function delete(User $user, Estampa $estampa){
         return false;

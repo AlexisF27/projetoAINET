@@ -9,6 +9,7 @@ use App\Models\Tshirt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Cliente;
 
 class EstampaController extends Controller
 {
@@ -39,6 +40,7 @@ class EstampaController extends Controller
     public function index_clientes(Request $request,Cliente $user_id){
         $selectedCategoria = $request->categoria ?? '';
         $selectedNomeEstampa = $request->nome ?? '';
+        $user = Auth::user();
         $qry = Estampa::query();
         if ($selectedCategoria) {
             $qry->where('categoria_id', $selectedCategoria);
@@ -52,7 +54,8 @@ class EstampaController extends Controller
         compact('selectedCategoria',
                 'selectedNomeEstampa',
                 'todasEstampas',
-                'lista_Categorias'));
+                'lista_Categorias',
+                'user'));
     }
 
     public function create(){
@@ -64,6 +67,7 @@ class EstampaController extends Controller
 
     public function store(EstampaPost $request){
         $dados = $request->validated();
+        $dados['cliente_id'] = Auth::user()->id;
         if($request->file('imagem_url')->isValid()){
             $dados['imagem_url'] = Storage::putFile('public/estampas', $request->file('imagem_url'));
             $dados['imagem_url'] = str_replace('public/estampas/', '', $dados['imagem_url']);
