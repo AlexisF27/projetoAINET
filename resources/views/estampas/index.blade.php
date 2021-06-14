@@ -28,7 +28,7 @@
         </div>
   </form>
     <div class="col-3">
-        <a href="{{route('estampas.index_clientes',['id' => $user->id])}}" class="btn btn-success" role="button" aria-pressed="true">Mis Estampas</a>
+        <a href="{{route('estampas.index_clientes',['id' => $user->id])}}" class="btn btn-info" role="button" aria-pressed="true">Mis Estampas</a>
     </div>
 </div>
 

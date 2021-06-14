@@ -40,12 +40,8 @@
             <th>Descricao</th>
             <th>Categoria</th>
             <th>Adicinoar</th>
-            @can('view', new App\Models\Estampa)
             <th></th>
-            @endcan
-            @can('delete', new App\Models\Estampa)
             <th></th>
-            @endcan
 
 
         </tr>
@@ -70,21 +66,17 @@
                     <input class="btn btn-success" type="submit" value="Adicionar">
                 </form>
                 </td>
-                @can('view', $estampa)
+
                 <td>
                     <a href="{{route('estampas.edit', ['estampa' => $estampa])}}"
                         class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
-                @endcan
-                @can('delete', $estampa)
                 <td>
                     <form action="{{route('estampas.destroy', ['estampa' => $estampa])}}" method="POST">
                         @csrf
                         @method("DELETE")
                         <input type="submit" class="btn btn-danger btn-sm" value="Apagar">
                     </form>
-                </td>
-                @endcan
             </tr>
         @endforeach
         </div>
