@@ -46,9 +46,17 @@
                     </div>
 
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item" >
-                            <a class="btn btn-primary" href="{{ route('carrinho.index') }}" role="button">Carrinho de compras</a>
-                        </li>
+                        <div>
+                            <li class="nav-item" >
+                                <a  class="btn btn-primary" href="{{ route('encomendas.index') }}" role="button">Encomendas </a>
+                            </li>
+                        </div>
+
+                        <div>
+                            <li class="nav-item" >
+                                <a  class="btn btn-primary" href="{{ route('carrinho.index') }}" role="button">Carrinho de compras</a>
+                            </li>
+                        </div>
 
                         @guest
                             <li class="nav-item">
