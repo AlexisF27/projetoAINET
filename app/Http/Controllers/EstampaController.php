@@ -36,6 +36,25 @@ class EstampaController extends Controller
                 'newTshirt'));
     }
 
+    public function index_clientes(Request $request,Cliente $user_id){
+        $selectedCategoria = $request->categoria ?? '';
+        $selectedNomeEstampa = $request->nome ?? '';
+        $qry = Estampa::query();
+        if ($selectedCategoria) {
+            $qry->where('categoria_id', $selectedCategoria);
+        }
+        if($selectedNomeEstampa){
+            $qry->where('nome', $selectedNomeEstampa);
+        }
+        $todasEstampas = $qry->where('cliente_id', $user_id)->paginate(10);
+        $lista_Categorias = Categoria::pluck('nome','id');
+        return view('estampas.index_clientes',
+        compact('selectedCategoria',
+                'selectedNomeEstampa',
+                'todasEstampas',
+                'lista_Categorias'));
+    }
+
     public function create(){
         $newEstampa = new Estampa();
         $lista_categorias = Categoria::all();

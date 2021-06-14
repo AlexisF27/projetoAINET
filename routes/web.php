@@ -54,18 +54,52 @@ Route::get('tshirt/create', [TshirtController::class, 'create'])->name('tshirts.
 Route::get('tshirt/{tshirt}/edit', [TshirtController::class, 'edit'])->name('tshirts.edit');
 Route::put('tshirt/{tshirt}', [TshirtController::class, 'update'])->name('tshirts.update');
 //Encomendas
-Route::get('encomendas/', [EncomendaController::class, 'index'])->name('encomendas.index');
-Route::put('encomendas/{encomenda}',[EncomendaController::class, 'updateEstado'])->name('encomendas.update');
-Route::get('encomendas/funcionario/detalhes/{encomenda}',[EncomendaController::class, 'index_funcionario'])->name('encomendas.index_funcionario');
-
+Route::middleware(['auth'])->group(function () {
+    Route::get('encomendas/', [EncomendaController::class, 'index'])->name('encomendas.index');
+    Route::get('encomendas/funcionario/detalhes/{encomenda}',[EncomendaController::class, 'index_funcionario'])
+        ->name('encomendas.index_funcionario')
+        ->middleware('can:viewFuncionario,App\Models\Encomenda');
+    Route::put('encomendas/{encomenda}',[EncomendaController::class, 'updateEstado'])
+        ->name('encomendas.updateEstado')
+        ->middleware('can:updateEstado,App\Models\Encomenda');
+    Route::post('encomendas/', [EncomendaController::class, 'store'])
+        ->name('encomendas.store')
+        ->middleware('can:store,App\Models\Encomenda');
+    Route::get('encomendas/{encomenda}/edit', [EncomendaController::class, 'edit'])
+        ->name('encomendas.edit')
+        ->middleware('can:viewFuncionario,App\Models\Encomenda');
+    Route::put('encomendas/{encomenda}',[EncomendaController::class, 'update'])
+        ->name('encomendas.update')
+        ->middleware('can:update,App\Models\Encomenda');
+    Route::delete('encomendas/{encomenda}', [EncomendaController::class, 'destroy'])
+        ->name('encomendas.destroy')
+        ->middleware('can:delete,App\Models\Encomenda');
+    Route::get('encomendas/create', [EncomendaController::class, 'create'])
+        ->name('encomendas.create')
+        ->middleware('can:create,App\Models\Encomenda');
+});
 //Catalogo
 Route::middleware(['auth'])->group(function () {
-    Route::get('catalogo/', [EstampaController::class, 'index'])->name('estampas.index')->middleware('can:viewAny,App\Models\Estampa');
-    Route::post('catalogo/', [EstampaController::class, 'store'])->name('estampas.store')->middleware('can:create,App\Models\Estampa');
-    Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])->name('estampas.update')->middleware('can:update,App\Models\Estampa');
-    Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])->name('estampas.edit')->middleware('can:view,App\Models\Estampa');
-    Route::get('catalogo/create', [EstampaController::class, 'create'])->name('estampas.create')->middleware('can:create,App\Models\Estampa');
-    Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])->name('estampas.destroy')->middleware('can:delete,App\Models\Estampa');
+    Route::get('catalogo/', [EstampaController::class, 'index'])
+        ->name('estampas.index')
+        ->middleware('can:viewAny,App\Models\Estampa');
+    Route::post('catalogo/', [EstampaController::class, 'store'])
+        ->name('estampas.store')
+        ->middleware('can:create,App\Models\Estampa');
+    Route::put('catalogo/estampa/{estampa}', [EstampaController::class, 'update'])
+        ->name('estampas.update')
+        ->middleware('can:update,App\Models\Estampa');
+    Route::get('catalogo/estampa/{estampa}/edit', [EstampaController::class, 'edit'])
+        ->name('estampas.edit')
+        ->middleware('can:view,App\Models\Estampa');
+    Route::get('catalogo/create', [EstampaController::class, 'create'])
+        ->name('estampas.create')
+        ->middleware('can:create,App\Models\Estampa');
+    Route::delete('catalogo/estampa/{estampa}', [EstampaController::class, 'destroy'])
+        ->name('estampas.destroy')
+        ->middleware('can:delete,App\Models\Estampa');
+    Route::get('catalogo/cliente/{id}/estampas', [EstampaController::class,'index_clientes'])
+        ->name('estampas.index_clientes');
 });
 
 

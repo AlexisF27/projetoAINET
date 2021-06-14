@@ -8,7 +8,7 @@
 
 <div class="form-group">
     <label for="inputNome">Descrição</label>
-    <textarea rows="5" type="text" class="form-control" name="descricao" id="textAreaDescricao" value="{{old('nome', $newEstampa->descricao)}}">
+    <textarea rows="5" type="text" class="form-control" name="descricao" id="textAreaDescricao" value="{{old('descricao', $newEstampa->descricao)}}">
     </textarea>
       @error('descricao')
           <div class="small text-danger">{{$message}}</div>

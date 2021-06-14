@@ -6,7 +6,7 @@
 
     <div class="col-3">
         @can('create', new App\Models\Estampa)
-        <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Disciplina</a>
+        <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Estampa</a>
         @endcan
     </div>
 
@@ -27,6 +27,10 @@
             </div>
         </div>
   </form>
+
+  <div class="col-3">
+        <a href="{{route('estampas.index_clientes')}}" class="btn btn-success" role="button" aria-pressed="true">Mis Estampas</a>
+</div>
 </div>
 
 
