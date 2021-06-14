@@ -21,7 +21,6 @@ use App\Http\Controllers\TshirtController;
 */
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('admin/clientes', [ClienteController::class, 'admin_index'])->name('admin.clientes');
 Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
 //Login
