@@ -36,6 +36,10 @@ class UserController extends Controller
                     'selectedEmail'));
     }
 
+    public function index_estatisticas(Request $request){
+        return view('estatisticas');
+    }
+
     public function create(){
         $newUser = new User();
         $lista_tipo = array( 'C', 'F', 'A');

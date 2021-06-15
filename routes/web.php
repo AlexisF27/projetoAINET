@@ -74,6 +74,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('admin/users/{user}', [UserController::class, 'destroy'])
         ->name('users.destroy')
         ->middleware('can:delete,App\Models\User');
+    Route::get('admin/estatisticas',[UserController::class, 'index_estatisticas'])
+        ->name('users.estatisticas')
+        ->middleware('can:view,App\Models\User');
 });
 //Encomendas
 Route::middleware(['auth'])->group(function () {
@@ -102,6 +105,9 @@ Route::middleware(['auth'])->group(function () {
 });
 //Catalogo
 Route::middleware(['auth'])->group(function () {
+    Route::get('catalogo/', [EstampaController::class, 'index'])
+    ->name('estampas.index')
+    ->middleware('can:viewAny,App\Models\Estampa');
     Route::get('/', [EstampaController::class, 'index'])
         ->name('estampas.index')
         ->middleware('can:viewAny,App\Models\Estampa');

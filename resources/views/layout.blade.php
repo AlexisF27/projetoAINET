@@ -22,14 +22,13 @@
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
+            <header>
             <!-- Main Content -->
             <div id="content">
 
@@ -129,16 +128,36 @@
                 <!-- /.container-fluid -->
 
             </div>
+            </header>
             <!-- End of Main Content -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Departamento de Engenharia Informática 2020</span>
+            <div class="container">
+                <nav>
+                    <ul>
+                    </ul>
+                </nav>
+
+                <section id="main">
+                    <div class="content">
+                        <div class="left-content">
+                        </div>
+                        <aside>
+
+                        </aside>
                     </div>
-                </div>
-            </footer>
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Departamento de Engenharia Informática 2020</span>
+                            </div>
+                        </div>
+                    </footer>
+
+                </section>
+            </div>
+
+            <!-- Footer -->
+
             <!-- End of Footer -->
 
         </div>
