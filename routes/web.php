@@ -20,15 +20,13 @@ use App\Http\Controllers\TshirtController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
-Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
 //Login
 Auth::routes();
 
+//Users
+Route::get('admin/users', [UserController::class, 'admin_index'])->name('admin.users');
 
-
-Auth::routes();
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -79,7 +77,7 @@ Route::middleware(['auth'])->group(function () {
 });
 //Catalogo
 Route::middleware(['auth'])->group(function () {
-    Route::get('catalogo/', [EstampaController::class, 'index'])
+    Route::get('/', [EstampaController::class, 'index'])
         ->name('estampas.index')
         ->middleware('can:viewAny,App\Models\Estampa');
     Route::post('catalogo/', [EstampaController::class, 'store'])

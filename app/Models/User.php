@@ -12,6 +12,7 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
+    public $timestamps = false;
     /**
      * The attributes that are mass assignable.
      *
@@ -21,8 +22,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'foto_url',
+        'remember_token',
+        'tipo',
+        'bloqueado',
+        'foto_url'
     ];
+
+
 
     /**
      * The attributes that should be hidden for arrays.
