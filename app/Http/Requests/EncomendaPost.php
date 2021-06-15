@@ -44,6 +44,5 @@ class EncomendaPost extends FormRequest
             'nif.required' => 'É obrigatorio colocar o nif',
             'data.required' => 'É obrigatorio colocar a data',
         ];
-
     }
 }
