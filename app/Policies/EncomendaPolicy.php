@@ -34,12 +34,12 @@ class EncomendaPolicy
         return($user->tipo == 'F');
     }
 
-    public function updateEstado(User $user, Encomenda $encomenda) {
-        return $user->id == $encomenda->cliente_id;
+    public function updateEstado(User $user) {
+        return ($user->tipo == 'F');
     }
 
     public function create(User $user){
-        return false;
+        return true;
     }
     public function delete(User $user, Encomenda $encomenda){
         return false;

@@ -47,11 +47,19 @@
                 <td>{{$user->tipo}}</td>
                 <td>{{$user->bloqueado}}</td>
                 <td>
-                    <a href=""
+                    <form action="{{route('users.updateBloqueado', ['user' => $user])}}" method="POST">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" name="quantidade" value="-1">
+                        <input class="btn btn-primary btn-sm" role="button" type="submit" value="Bloquear - Não Bloquear">
+                    </form>
+                </td>
+                <td>
+                    <a href="{{route('users.edit', ['user' => $user])}}"
                        class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a>
                 </td>
                 <td>
-                    <form action="#" method="POST">
+                    <form action="{{route('users.destroy', ['user' => $user])}}" method="POST">
                         @csrf
                         @method("DELETE")
                         <input type="submit" class="btn btn-danger btn-sm" value="Apagar">

@@ -46,6 +46,15 @@
                     </div>
 
                     <ul class="navbar-nav ml-auto">
+
+                        @can('view', new App\Models\Estampa)
+                        <div>
+                            <li class="nav-item" >
+                                <a  class="btn btn-primary" href="{{ route('admin.users') }}" role="button">Usuarios </a>
+                            </li>
+                        </div>
+                        @endcan
+
                         <div>
                             <li class="nav-item" >
                                 <a  class="btn btn-primary" href="{{ route('encomendas.index') }}" role="button">Encomendas </a>

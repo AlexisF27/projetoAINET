@@ -5,9 +5,7 @@
 <div class="row">
 
     <div class="col-3">
-
         <a href="{{route('estampas.create')}}" class="btn btn-success" role="button" aria-pressed="true">Nova Estampa</a>
-
     </div>
 
     <form method="GET" action="{{route('estampas.index')}}" class="form-group">

@@ -52,13 +52,29 @@ Route::get('tshirt/{tshirt}/edit', [TshirtController::class, 'edit'])->name('tsh
 Route::put('tshirt/{tshirt}', [TshirtController::class, 'update'])->name('tshirts.update');
 
 //Users
-Route::get('admin/users/', [UserController::class, 'admin_index'])->name('admin.users');
-Route::get('admin/users/create', [UserController::class, 'create'])->name('users.create');
-Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::post('admin/users/', [UserController::class, 'store'])->name('users.store');
-Route::put('admin/users/{user}',[UserController::class, 'update'])->name('users.update');
-Route::put('admin/users/{user}',[UserController::class, 'updateBloqueado'])->name('users.updateBloqueado');
-Route::delete('admin/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::middleware(['auth'])->group(function () {
+    Route::get('admin/users/', [UserController::class, 'admin_index'])
+        ->name('admin.users')
+        ->middleware('can:view,App\Models\User');
+    Route::get('admin/users/create', [UserController::class, 'create'])
+        ->name('users.create')
+        ->middleware('can:create,App\Models\User');
+    Route::get('admin/users/{user}/edit', [UserController::class, 'edit'])
+        ->name('users.edit')
+        ->middleware('can:view,App\Models\User');
+    Route::post('admin/users/', [UserController::class, 'store'])
+        ->name('users.store')
+        ->middleware('can:store,App\Models\User');
+    Route::put('admin/users/',[UserController::class, 'update'])
+        ->name('users.update')
+        ->middleware('can:update,App\Models\User');
+    Route::put('admin/users/{user}',[UserController::class, 'updateBloqueado'])
+        ->name('users.updateBloqueado')
+        ->middleware('can:view,App\Models\Encomenda');
+    Route::delete('admin/users/{user}', [UserController::class, 'destroy'])
+        ->name('users.destroy')
+        ->middleware('can:delete,App\Models\User');
+});
 //Encomendas
 Route::middleware(['auth'])->group(function () {
     Route::get('encomendas/', [EncomendaController::class, 'index'])->name('encomendas.index');
