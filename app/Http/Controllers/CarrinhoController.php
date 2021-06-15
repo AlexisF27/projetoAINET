@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TshirtPost;
 use App\Models\Cores;
 use App\Models\Encomenda;
 use App\Models\Estampa;
@@ -26,6 +27,7 @@ class CarrinhoController extends Controller
         $carrinho = $request->session()->get('carrinho', []);
         $user = Auth::user();
         $encomenda = new Encomenda();
+        $encomenda->id = Encomenda::all()->last()['id'] +1;
         $encomenda->cliente_id = $user->id;
         $encomenda->data = date("Y-m-d");
         $encomenda->preco_total = 10.0;
@@ -34,6 +36,7 @@ class CarrinhoController extends Controller
         $encomenda->tipo_pagamento = $user->tipo_pagamento;
         $encomenda->ref_pagamento = $user->tipo_pagamento;
         $tshirt = new Tshirt();
+        $tshirt->id = Tshirt::all()->last()['id'] + 1;
         $tshirt->encomenda_id = $encomenda->id;
         $tshirt->estampa_id = $estampa->id;
         $tshirt->cor_codigo = '00a2f2';
@@ -61,10 +64,25 @@ class CarrinhoController extends Controller
              ->with('alert-msg', 'Foi adicionada uma t-shirt  com a estampa "' . $estampa->nome . '" ao carrinho! Quantidade de t-shirts = ' .  $quantidade)
              ->with('alert-type', 'success');
     }
-
-    public function editar_t_shirt(Request $request,Tshirt $tshirt){
-
+//--Prueba
+    public function editar_t_shirt(Request $request, Estampa $estampa, Tshirt $tshirt){
+        $carrinho = $request->session()->get('carrinho', []);
+        $tshirt = $carrinho[$estampa->id]['tshirt_all'];
+        $tamanhos = array( 'XS', 'S', 'M', 'L', 'XL');
+        $lista_cores= Cores::all();
+        return view('tshirts.edit',compact('lista_cores','tamanhos'))->withTshirt($tshirt)->withEstampa($estampa);
     }
+
+    public function update(TshirtPost $request, Estampa $estampa, Tshirt $tshirt){
+        $carrinho = $request->session()->get('carrinho', []);
+        $tshirt = $carrinho[$estampa->id]['tshirt_all'];
+        $tshirt->fill($request->validated());
+        return redirect()->route('carrinhos.index')
+        ->with('alert-msg', 'Tshirt "' . $tshirt->id . '" foi alterada com sucesso!')
+        ->with('alert-type', 'success');
+    }
+ //--Prueba
+
     public function update_t_shirt(Request $request, Estampa $estampa, Tshirt $tshirt)
     {
         $carrinho = $request->session()->get('carrinho', []);

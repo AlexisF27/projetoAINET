@@ -62,13 +62,13 @@ class UserController extends Controller
 
     public function updateBloqueado(Request $request, $id){
         $user = User::findOrFail($id);
-        if($user->tipo == 0){
+
+        if($user->bloqueado == 0){
             $msg = 'O usuario' . $user->name . ' foi bloqueado';
-            $user->tipo = 1;
-        }
-        if($user->tipo == 1){
+            $user->bloqueado = 1;
+        }else{
             $msg = 'O usuario' . $user->name . ' deixou de estar bloqueado';
-            $user->tipo = 0;
+            $user->bloqueado = 0;
         }
         $user->save();
         return back()

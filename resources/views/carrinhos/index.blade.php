@@ -49,7 +49,7 @@
         <td>{{ $row['preco_un'] }} </td>
         <td>{{ $row['subtotal'] }} </td>
         <td>
-            {{-- <a href="{{route('tshirts.edit', ['tshirt' => $row['tshirt_all']['id']])}}"
+            {{-- <a href="{{route('carrinho.editar_t_shirt',$row['estampa_all'], $row['tshirt_all'] )}}"
                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a> --}}
         </td>
         <td>

@@ -19,14 +19,13 @@ class TshirtController extends Controller
     }
 
     public function edit(Tshirt $tshirt){
-        $lista_cores= Cores::all();
-        return view('estampas.edit',compact('lista_cores','tshirt'));
+
     }
 
     public function update(Request $request, Tshirt $tshirt){
         $dados = $request->validated();
         $tshirt->fill($dados);
-        $tshirt->save();
+        // $tshirt->save();
         return redirect()->route('carrinho.index')
             ->with('alert-msg', 'Tshirt "' . $tshirt->id . '" foi alterada com sucesso!')
             ->with('alert-type', 'success');

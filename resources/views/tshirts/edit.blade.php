@@ -2,7 +2,7 @@
 @section('title','Alterar Tshirt' )
 @section('content')
 
-    <form method="POST" action="{{route('tshirts.update', ['tshirt' => $tshirt]) }}" class="form-group" enctype="multipart/form-data">
+    <form method="POST" action="{{route('carrinho.update', ['tshirt' => $tshirt], ['estampa' => $estampa]) }}" class="form-group" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         @include('tshirts.partials.create-edit')

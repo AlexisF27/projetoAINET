@@ -30,13 +30,4 @@ class EstampaPost extends FormRequest
             'categoria_id' => 'required|exists:categorias,id'
         ];
     }
-
-    public function messages()
-    {
-        return[
-            'nome.required' => 'É obrigatorio colocar nome',
-            'imagem_url.required' => 'É obrigatorio colocar uma imagem'
-        ];
-
-    }
 }
