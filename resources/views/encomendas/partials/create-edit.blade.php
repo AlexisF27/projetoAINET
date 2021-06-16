@@ -12,21 +12,50 @@
     @enderror
 </div>
 
+
+
 <div class="form-group">
+    <label for="inputClienteNome">Cliente Nome</label>
+    <select class="form-control" name="clienteNome" id="inputClienteNome">
+        @foreach ($lista_users as $user)
+          <option value="{{$user->id}}" {{ old('clienteNome', $newEncomenda->cliente_id) == $user->id ? 'selected' : ''}}>{{$user->name}}</option>
+        @endforeach
+    </select>
+      @error('clienteNome')
+          <div class="small text-danger">{{$message}}</div>
+      @enderror
+</div>
+
+
+<div class="form-group">
+    <label for="inputClienteNome">Cliente Email</label>
+    <select class="form-control" name="cliente_email" id="inputClienteEmail">
+        @foreach ($lista_users as $user)
+          <option value="{{$user->id}}" {{ old('cliente_email', $newEncomenda->cliente_id) == $user->id ? 'selected' : ''}}>{{$user->email}}</option>
+        @endforeach
+    </select>
+      @error('cliente_email')
+          <div class="small text-danger">{{$message}}</div>
+      @enderror
+</div>
+
+
+
+{{-- <div class="form-group">
     <label for="inputClienteNome">Cliente Nome</label>
     <input type="text" class="form-control" name="clienteNome" id="inputClienteNome" value="{{old('clienteNome',$newEncomenda->clienteRef->user->name)}}"/>
     @error('clienteNome')
         <div class="error">{{ $message }}</div>
     @enderror
-</div>
+</div> --}}
 
-<div class="form-group">
+{{-- <div class="form-group">
     <label for="inputClienteEmail">Cliente Email</label>
     <input type="text" class="form-control" name="clienteEmail" id="inputClienteEmail" value="{{old('clienteEmail',$newEncomenda->clienteRef->user->email)}}"/>
     @error('clienteEmail')
         <div class="error">{{ $message }}</div>
     @enderror
-</div>
+</div> --}}
 
 <div class="form-group">
     <label for="inputData">Encomenda Data</label>

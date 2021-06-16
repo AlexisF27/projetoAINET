@@ -7,6 +7,8 @@ use App\Models\Encomenda;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\EncomendaShipped;
 
 class EncomendaController extends Controller
 {
@@ -49,7 +51,8 @@ class EncomendaController extends Controller
         $newEncomenda = new Encomenda();
         $lista_estados = array( 'pendente', 'paga', 'fechada', 'anulada');
         $lista_tipo_pagamento = array('VISA', 'MC', 'PAYPAL');
-        return view('encomendas.create',compact('newEstampa','lista_categorias', 'lista_tipo_pagamento'));
+        $lista_users = User::all();
+        return view('encomendas.create',compact('lista_users','newEncomenda','lista_estados', 'lista_tipo_pagamento'));
     }
 
     public function store(EncomendaPost $request){
@@ -61,7 +64,8 @@ class EncomendaController extends Controller
     public function edit(Encomenda $encomenda){
         $lista_estados = array( 'pendente', 'paga', 'fechada', 'anulada');
         $lista_tipo_pagamento = array('VISA', 'MC', 'PAYPAL');
-        return view('encomendas.edit',compact('lista_estados','lista_tipo_pagamento'))->withNewEncomenda($encomenda);
+        $lista_users = User::all();
+        return view('encomendas.edit',compact('lista_users','lista_estados','lista_tipo_pagamento'))->withNewEncomenda($encomenda);
     }
 
 
@@ -70,6 +74,13 @@ class EncomendaController extends Controller
         if($encomenda->estado == 'paga'){
             $msg = 'O estado da encomenda ' . $request->id . ' foi mudado para fechada ';
             $encomenda->estado = 'fechada';
+            $user = User::findOrFail($encomenda->cliente_id);
+            $encomenda->save();
+            Mail::to($user)
+                ->send(new EncomendaShipped($encomenda));
+            return redirect()->route('encomendas.index')
+                ->with('alert-type', 'success')
+                ->with('alert-msg', 'E-Mail sent with success (using Mailable)');
         }
         if($encomenda->estado == 'pendente'){
             $msg = 'O estado da encomenda ' . $request->id . ' foi mudado para pagada ';
