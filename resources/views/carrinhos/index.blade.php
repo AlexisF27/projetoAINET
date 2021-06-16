@@ -35,14 +35,14 @@
     </thead>
     <tbody>
     @foreach ($carrinho as $row)
-    {{-- <form method="POST" action="{{route('carrinho.update', ['estampa' => $newEstampa]) }}" class="form-group" enctype="multipart/form-data">
-        @csrf
-        @method('PUT') --}}
     <tr>
+        <form method="POST" action="{{route('carrinho.update', $row['estampa_all'])}}" class="form-group" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
         <td>
-        <div class="form-group">
-            <input type="number" class="form-control" name="quantidade" id="inputQuantidade" value="{{old('quantidade',$row['quantidade'])}}"/>
-        </div>
+            <div class="form-group">
+                <input type="number" class="form-control" name="quantidade" id="inputQuantidade" value="{{old('quantidade',$row['quantidade'])}}"/>
+            </div>
         </td>
         <td>
             <div class="estampa-imagem">
@@ -51,7 +51,7 @@
                             asset('storage/fotos/default.png') }}" alt="Imagem da Estampa" width="42" style="horizontal-align:middle">
             </div>
         </td>
-        <td>
+    <td>
         <div class="form-group">
             <select class="form-control" name="cor_codigo" id="inputCor_codigo">
                 @foreach ($lista_cores as $cor)
@@ -59,7 +59,7 @@
                 @endforeach
             </select>
         </div>
-        </td>
+    </td>
         <td>
         <div class="form-group">
             <select class="form-control" name="tamanho" id="inputTamanho">
@@ -77,6 +77,7 @@
             {{-- <a href="{{route('carrinho.editar_t_shirt',$row['estampa_all'], $row['tshirt_all'] )}}"
                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a> --}}
         </td>
+        </form>
         <td>
             <form action="{{route('carrinho.update_t_shirt', $row['estampa_all'], $row['tshirt_all'])}}" method="POST">
                 @csrf
@@ -86,7 +87,7 @@
             </form>
         </td>
         <td>
-            <form action="{{route('carrinho.update_t_shirt', $row['estampa_all'], $row['tshirt_all'])}}" method="POST">
+            <form action="{{route('carrinho.update_t_shirt', $row['estampa_all'], $row['tshirt_all'])}}"    method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="quantidade" value="-1">
@@ -99,10 +100,9 @@
                 @method('delete')
                 <input type="submit" class="btn btn-danger btn-sm" type="submit" value="Remover">
             </form>
-
         </td>
     </tr>
-    </form>
+
     @endforeach
     </tbody>
 </table>

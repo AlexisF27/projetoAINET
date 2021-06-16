@@ -45,6 +45,7 @@ Route::post('carrinho/estampa/{estampa}', [CarrinhoController::class, 'store_t_s
 Route::put('carrinho/estampas/{estampa}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
 // Route::get('carrinho/estampas/{estampa}/tshirt/{tshirt}/edit',[CarrinhoController::class, 'editar_t_shirt'])->name('carrinho.editar_t_shirt');
 // Route::put('carrinho/estampas/{estampa}/tshirt/',[CarrinhoController::class, 'update'])->name('carrinho');
+Route::put('carrinho/estampas/update/{estampa}', [CarrinhoController::class, 'update_t_shirt_carrinho'])->name('carrinho.update');
 Route::delete('carrinho/tshirt/estampa/{estampa}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
 Route::post('carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::delete('carrinho', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');

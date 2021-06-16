@@ -82,6 +82,23 @@ class CarrinhoController extends Controller
 
     public function update_t_shirt_carrinho(Request $request,Estampa $estampa){
         $carrinho = $request->session()->get('carrinho', []);
+        $tshirt = Tshirt::findOrFail($carrinho[$estampa->id]['tshirt_all']->id);
+        $encomenda = Encomenda::findOrFail($carrinho[$estampa->id]['encomenda']->id);
+        $carrinho[$estampa->id] = [
+            'id' => $tshirt->id,
+            'quantidade' => $request->quantidade,
+            'estampa_id' => $estampa->id,
+            'estampa' => $estampa->imagem_url,
+            'cor' => $request->cor_codigo,
+            'tamanho' => $request->tamanho,
+            'tshirt_all' => $tshirt,
+            'estampa_all' => $estampa,
+            'encomenda' => $encomenda,
+            'preco_un' => $tshirt->preco_un,
+            'subtotal' => $tshirt->subtotal * $request->quantidade
+        ];
+        $request->session()->put('carrinho', $carrinho);
+        return back();
 
     }
 
