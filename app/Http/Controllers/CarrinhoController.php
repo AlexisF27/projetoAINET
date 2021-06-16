@@ -65,8 +65,10 @@ class CarrinhoController extends Controller
              'subtotal' => $tshirt->subtotal * $quantidade
          ];
 
+         session()->put('carrinho', $carrinho);
+         session()->save();
 
-         $request->session()->put('carrinho', $carrinho);
+        //  $request->session()->put('carrinho', $carrinho);
          return back()
              ->with('alert-msg', 'Foi adicionada uma t-shirt  com a estampa "' . $estampa->nome . '" ao carrinho! Quantidade de t-shirts = ' .  $quantidade)
              ->with('alert-type', 'success');
@@ -81,7 +83,7 @@ class CarrinhoController extends Controller
     // }
 
     public function update_t_shirt_carrinho(Request $request,Estampa $estampa){
-        $carrinho = $request->session()->get('carrinho', []);
+        $carrinho = session()->get('carrinho', []);
         $tshirt = Tshirt::findOrFail($carrinho[$estampa->id]['tshirt_all']->id);
         $encomenda = Encomenda::findOrFail($carrinho[$estampa->id]['encomenda']->id);
         $carrinho[$estampa->id] = [
@@ -97,7 +99,8 @@ class CarrinhoController extends Controller
             'preco_un' => $tshirt->preco_un,
             'subtotal' => $tshirt->subtotal * $request->quantidade
         ];
-        $request->session()->put('carrinho', $carrinho);
+        session()->put('carrinho', $carrinho);
+        session()->save();
         return back();
 
     }

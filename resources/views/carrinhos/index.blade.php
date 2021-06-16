@@ -55,7 +55,7 @@
         <div class="form-group">
             <select class="form-control" name="cor_codigo" id="inputCor_codigo">
                 @foreach ($lista_cores as $cor)
-                  <option value="{{$cor->id}}" {{ old('cor', $row['cor']) == $cor->codigo ? 'selected' : ''}}>{{$cor->nome}}</option>
+                  <option value="{{$cor->codigo}}" {{ old('cor_codigo', $row['cor']) == $cor->codigo ? 'selected' : ''}}>{{$cor->nome}}</option>
                 @endforeach
             </select>
         </div>
