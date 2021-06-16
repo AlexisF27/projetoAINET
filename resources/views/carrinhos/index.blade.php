@@ -35,10 +35,15 @@
     </thead>
     <tbody>
     @foreach ($carrinho as $row)
+    {{-- <form method="POST" action="{{route('carrinho.update', ['estampa' => $newEstampa]) }}" class="form-group" enctype="multipart/form-data">
+        @csrf
+        @method('PUT') --}}
     <tr>
-        {{-- form updateLinhaCarrinho
-        input id Session --}}
-        <td> {{ $row['quantidade'] }} </td>
+        <td>
+        <div class="form-group">
+            <input type="number" class="form-control" name="quantidade" id="inputQuantidade" value="{{old('quantidade',$row['quantidade'])}}"/>
+        </div>
+        </td>
         <td>
             <div class="estampa-imagem">
                 <img src="{{ $row['estampa']  ?
@@ -46,12 +51,28 @@
                             asset('storage/fotos/default.png') }}" alt="Imagem da Estampa" width="42" style="horizontal-align:middle">
             </div>
         </td>
-        {{-- select  --}}
-        <td>{{ $row['cor'] }} </td>
-        <td>{{ $row['tamanho'] }} </td>
+        <td>
+        <div class="form-group">
+            <select class="form-control" name="cor_codigo" id="inputCor_codigo">
+                @foreach ($lista_cores as $cor)
+                  <option value="{{$cor->id}}" {{ old('cor', $row['cor']) == $cor->codigo ? 'selected' : ''}}>{{$cor->nome}}</option>
+                @endforeach
+            </select>
+        </div>
+        </td>
+        <td>
+        <div class="form-group">
+            <select class="form-control" name="tamanho" id="inputTamanho">
+                @foreach ($lista_tamanhos as $tamanho)
+                  <option value="{{$tamanho}}" {{ old('tamanho', $row['tamanho']) ? 'selected' : ''}}>{{$tamanho}}</option>
+                @endforeach
+            </select>
+        </div>
+        </td>
         <td>{{ $row['preco_un'] }} </td>
         <td>{{ $row['subtotal'] }} </td>
         <td>
+            <button type="submit" class="btn btn-success" name="ok">Atualizar</button>
             {{-- button submit --}}
             {{-- <a href="{{route('carrinho.editar_t_shirt',$row['estampa_all'], $row['tshirt_all'] )}}"
                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a> --}}
@@ -81,6 +102,7 @@
 
         </td>
     </tr>
+    </form>
     @endforeach
     </tbody>
 </table>

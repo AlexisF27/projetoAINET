@@ -67,7 +67,7 @@
 
 <div class="form-group">
     <label for="inputPrecoTotal">Encomenda Preco Total</label>
-    <input type="text" class="form-control" name="preco_total" id="inputPrecoTotal" value="{{old('preco_total',$newEncomenda->preco_total)}}"/>
+    <input type="number" class="form-control" name="preco_total" id="inputPrecoTotal" value="{{old('preco_total',$newEncomenda->preco_total)}}"/>
     @error('preco_total')
         <div class="error">{{ $message }}</div>
     @enderror
