@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Encomenda;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
 class EncomendaPolicy
 {
@@ -15,14 +16,14 @@ class EncomendaPolicy
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
         //
     }
 
     public function before(User $user, $ability)
     {
-        if ($user->tipo == 'A' || $user->tipo == 'F') {
+        if ($user->tipo == 'A') {
             return true;
         }
     }
@@ -37,6 +38,7 @@ class EncomendaPolicy
     public function updateEstado(User $user) {
         return ($user->tipo == 'F');
     }
+
 
     public function create(User $user){
         return true;

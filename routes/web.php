@@ -43,10 +43,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('carrinho/', [CarrinhoController::class, 'index'])->name('carrinho.index');
 Route::post('carrinho/estampa/{estampa}', [CarrinhoController::class, 'store_t_shirt'])->name('carrinho.store_t_shirt');
 Route::put('carrinho/estampas/{estampa}', [CarrinhoController::class, 'update_t_shirt'])->name('carrinho.update_t_shirt');
-//--Prueba
-Route::get('carrinho/estampas/{estampa}/tshirt/{tshirt}/edit',[CarrinhoController::class, 'editar_t_shirt'])->name('carrinho.editar_t_shirt');
-Route::put('carrinho/estampas/{estampa}/tshirt/',[CarrinhoController::class, 'update'])->name('carrinho.update');
-//--Prueba
+// Route::get('carrinho/estampas/{estampa}/tshirt/{tshirt}/edit',[CarrinhoController::class, 'editar_t_shirt'])->name('carrinho.editar_t_shirt');
+// Route::put('carrinho/estampas/{estampa}/tshirt/',[CarrinhoController::class, 'update'])->name('carrinho');
 Route::delete('carrinho/tshirt/estampa/{estampa}', [CarrinhoController::class, 'destroy_t_shirt'])->name('carrinho.destroy_t_shirt');
 Route::post('carrinho', [CarrinhoController::class, 'store'])->name('carrinho.store');
 Route::delete('carrinho', [CarrinhoController::class, 'destroy'])->name('carrinho.destroy');
@@ -88,7 +86,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('encomendas/funcionario/detalhes/{encomenda}',[EncomendaController::class, 'index_funcionario'])
         ->name('encomendas.index_funcionario')
         ->middleware('can:viewFuncionario,App\Models\Encomenda');
-    Route::put('encomendas/{encomenda}',[EncomendaController::class, 'updateEstado'])
+    Route::put('encomendas/{encomenda}/estado',[EncomendaController::class, 'updateEstado'])
         ->name('encomendas.updateEstado')
         ->middleware('can:updateEstado,App\Models\Encomenda');
     Route::post('encomendas/', [EncomendaController::class, 'store'])

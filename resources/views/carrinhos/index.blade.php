@@ -36,7 +36,9 @@
     <tbody>
     @foreach ($carrinho as $row)
     <tr>
-        <td>{{ $row['quantidade'] }} </td>
+        {{-- form updateLinhaCarrinho
+        input id Session --}}
+        <td> {{ $row['quantidade'] }} </td>
         <td>
             <div class="estampa-imagem">
                 <img src="{{ $row['estampa']  ?
@@ -44,11 +46,13 @@
                             asset('storage/fotos/default.png') }}" alt="Imagem da Estampa" width="42" style="horizontal-align:middle">
             </div>
         </td>
+        {{-- select  --}}
         <td>{{ $row['cor'] }} </td>
         <td>{{ $row['tamanho'] }} </td>
         <td>{{ $row['preco_un'] }} </td>
         <td>{{ $row['subtotal'] }} </td>
         <td>
+            {{-- button submit --}}
             {{-- <a href="{{route('carrinho.editar_t_shirt',$row['estampa_all'], $row['tshirt_all'] )}}"
                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Alterar</a> --}}
         </td>

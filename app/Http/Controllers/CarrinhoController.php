@@ -27,7 +27,7 @@ class CarrinhoController extends Controller
         $carrinho = $request->session()->get('carrinho', []);
         $user = Auth::user();
         $encomenda = new Encomenda();
-        $encomenda->id = Encomenda::all()->last()['id'] +1;
+        //$encomenda->id = Encomenda::all()->last()['id'] +1;
         $encomenda->cliente_id = $user->id;
         $encomenda->data = date("Y-m-d");
         $encomenda->preco_total = 10.0;
@@ -35,8 +35,9 @@ class CarrinhoController extends Controller
         $encomenda->nif = $user->nif;
         $encomenda->tipo_pagamento = $user->tipo_pagamento;
         $encomenda->ref_pagamento = $user->tipo_pagamento;
+        $encomenda->save();
         $tshirt = new Tshirt();
-        $tshirt->id = Tshirt::all()->last()['id'] + 1;
+        //$tshirt->id = Tshirt::all()->last()['id'] + 1;
         $tshirt->encomenda_id = $encomenda->id;
         $tshirt->estampa_id = $estampa->id;
         $tshirt->cor_codigo = '00a2f2';
@@ -44,6 +45,7 @@ class CarrinhoController extends Controller
         $tshirt->quantidade = 1;
         $tshirt->preco_un = 10.0;
         $tshirt->subtotal = 10.0;
+        $tshirt->save();
         $quantidade = ($carrinho[$estampa->id]['quantidade'] ?? 0) + 1;
          $carrinho[$estampa->id] = [
              'id' => $tshirt->id,

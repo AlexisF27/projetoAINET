@@ -68,16 +68,16 @@
         <td>{{ $encomenda->estado }} </td>
         <td>{{ $encomenda->data }} </td>
         <td>{{ $encomenda->preco_total }} </td>
-            @can('viewFuncionario', $encomenda)
+
         <td>
-            <form action="{{route('encomendas.update', ['encomenda' => $encomenda->id])}}" method="POST">
+            <form action="{{route('encomendas.updateEstado', ['encomenda' => $encomenda->id])}}" method="POST">
                 @csrf
                 @method('put')
                 <input type="hidden" name="estado" >
                 <input class="btn btn-warning" type="submit" value="Mudar">
             </form>
       </td>
-      @endcan
+
         <td>
             <a href="{{route('encomendas.index_funcionario', ['encomenda' => $encomenda->id])}}"
                 class="btn btn-primary btn-sm" role="button" aria-pressed="true">Ver Detalhes</a>
